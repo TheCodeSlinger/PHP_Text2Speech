@@ -127,6 +127,7 @@ class PHP_Text2Speech {
 					$w = trim($w);
 					if (strlen($texts[$i] . ' ' . $w) < $this->maxStrLen) {
 						$texts[$i] = $texts[$i] . ' ' . $w; 
+						if (preg_match('/[:;,.!?-]$/', $w)) { $i++; } // splice on common breaks
 					} else {
 						$texts[++$i] = $w;
 					}
